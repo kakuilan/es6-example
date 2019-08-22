@@ -1,4 +1,4 @@
-// es6函数的rest(剩余)参数,如(...变量名)
+// es6函数的rest(剩余)参数,如(...变量名),将多余的函数参数放入数组中
 
 function add (...values) {
   let sum = 0
