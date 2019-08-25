@@ -40,3 +40,19 @@ getJSON(url1).then((json) => {
 }).catch((error) => {
   console.log('has err:', error)
 })
+
+// Promise.all方法,包装多个异步操作为新的Promise对象
+// 所有异步操作全部完成后,新Promise状态才为fulfilled;否则为rejected
+var arr = ['Javascript', 'Python', 'PHP']
+var promises = arr.map((lang) => {
+  var url = `https://api.github.com/search/repositories?q=stars:%3E1+language:${lang}&sort=stars&order=desc&type=Repositories`
+  console.log('url:', lang, url)
+  return getJSON(url)
+})
+
+Promise.all(promises).then(function (res) {
+  console.log('all done')
+  console.log(res)
+}).catch(function (reason) {
+  console.log('has fail:', reason)
+})
